@@ -1,0 +1,65 @@
+# ┌─────────────────────────────────────────────────────────────┐
+# │  Stormdot · .gitignore_global                               │
+# │  Patrones excluidos en TODOS los repos automáticamente       │
+# └─────────────────────────────────────────────────────────────┘
+
+# ── Sistema operativo ───────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Editores ────────────────────────────────────────────────────
+*.swp
+*.swo
+*.swn
+*.bak
+*~
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+.netrwhist
+
+# ── Logs y temporales ───────────────────────────────────────────
+*.log
+*.tmp
+*.temp
+*.cache
+.cache/
+
+# ── Python ──────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.env
+.python-version
+
+# ── Node ────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Compilados ──────────────────────────────────────────────────
+*.o
+*.so
+*.dylib
+*.exe
+*.out
+
+# ── Secretos ────────────────────────────────────────────────────
+*.key
+*.pem
+*.token
+.env.local
+.env.*.local
+secrets.json
+credentials.json

@@ -1,0 +1,126 @@
+# ┌─────────────────────────────────────────────────────────────┐
+# │  Stormdot · .gitconfig                                      │
+# │  Configuración global de git                                │
+# └─────────────────────────────────────────────────────────────┘
+
+[user]
+    name  = alromlll
+    email = 240017158+alromlll@users.noreply.github.com
+    # ⚠ Reemplazar USERNAME & TU-EMAIL@dominio.com por tu email real
+
+[init]
+    defaultBranch = main
+
+[core]
+    editor    = nvim
+    pager     = less -FRX
+    excludesfile = ~/.gitignore_global
+    autocrlf  = input
+    whitespace = trailing-space,space-before-tab
+
+[color]
+    ui = auto
+
+[color "branch"]
+    current = yellow reverse
+    local   = yellow
+    remote  = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old  = red
+    new  = green
+
+[color "status"]
+    added     = green
+    changed   = yellow
+    untracked = cyan
+
+# ── Comportamiento ──────────────────────────────────────────────
+[pull]
+    rebase = false              # merge por defecto (más seguro para principiantes)
+
+[push]
+    default          = simple
+    autoSetupRemote  = true     # git push sin -u en branches nuevos
+
+[fetch]
+    prune = true                # Limpiar branches remotos eliminados
+
+[rebase]
+    autoStash = true            # Stash automático al rebase
+    autosquash = true
+
+[merge]
+    conflictstyle = zdiff3      # Mejor visualización de conflictos
+
+[diff]
+    algorithm = histogram       # Mejor que el default 'myers'
+    colorMoved = default
+
+[rerere]
+    enabled = true              # "Reuse Recorded Resolution": recuerda resoluciones de conflictos
+
+# ── Aliases ─────────────────────────────────────────────────────
+[alias]
+    # Status / log
+    s   = status --short --branch
+    l   = log --oneline --graph --decorate
+    la  = log --oneline --graph --decorate --all
+    last = log -1 HEAD --stat
+
+    # Add / commit
+    a    = add
+    aa   = add --all
+    ap   = add --patch
+    c    = commit
+    cm   = commit -m
+    ca   = commit --amend
+    can  = commit --amend --no-edit
+
+    # Branch / checkout
+    co  = checkout
+    cb  = checkout -b
+    br  = branch
+    brd = branch -d
+    brD = branch -D
+
+    # Diff
+    d   = diff
+    ds  = diff --staged
+    dw  = diff --word-diff
+
+    # Push / pull / fetch
+    p    = push
+    pf   = push --force-with-lease
+    pl   = pull
+    f    = fetch --all --prune
+
+    # Stash
+    st  = stash
+    stp = stash pop
+    stl = stash list
+
+    # Reset
+    unstage = reset HEAD --
+    undo    = reset --soft HEAD~1
+
+    # Útiles
+    aliases = !git config --get-regexp '^alias\\.' | sed 's/^alias\\.//' | sort
+    contributors = shortlog --summary --numbered
+
+# ── URLs: usar SSH automáticamente para GitHub ──────────────────
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
+# ── Credenciales (helper en cache para HTTPS, no necesario si usas SSH) ──
+[credential]
+    helper = cache --timeout=3600
+
+# ── Filtros opcionales ──────────────────────────────────────────
+[filter "lfs"]
+    clean    = git-lfs clean -- %f
+    smudge   = git-lfs smudge -- %f
+    process  = git-lfs filter-process
+    required = true

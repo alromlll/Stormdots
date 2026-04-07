@@ -1,0 +1,120 @@
+# ┌─────────────────────────────────────────────────────────────┐
+# │  Stormdot · starship.toml                                   │
+# │  Prompt minimalista. Paleta Nord coherente con kitty/waybar │
+# │  Docs: https://starship.rs/config/                          │
+# └─────────────────────────────────────────────────────────────┘
+
+# Formato del prompt (arriba: info; abajo: símbolo)
+format = """
+$os\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$golang\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Sin palette personalizada — usa colores ANSI (los hereda del tema de kitty)
+add_newline = true
+command_timeout = 500
+
+# ── OS icon (solo se muestra en SSH/root para dar contexto) ──
+[os]
+disabled = false
+format = '[$symbol](bold cyan) '
+
+[os.symbols]
+Arch = ''
+Ubuntu = ''
+Debian = ''
+Raspbian = ''
+Linux = ''
+
+# ── Hostname (solo cuando estoy en SSH — deja claro que no es local) ──
+[hostname]
+ssh_only = true
+format = '[$hostname](bold red) '
+disabled = false
+
+# ── Directorio ──
+[directory]
+style = 'bold blue'
+truncation_length = 3
+truncation_symbol = '…/'
+truncate_to_repo = true
+read_only = ' '
+read_only_style = 'red'
+home_symbol = '~'
+
+[directory.substitutions]
+'Documents' = ' '
+'Downloads' = ' '
+'Pictures'  = ' '
+'Projects'  = ' '
+
+# ── Git ──
+[git_branch]
+symbol = ' '
+style = 'bold purple'
+format = 'on [$symbol$branch]($style) '
+
+[git_status]
+style = 'red'
+format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = '='
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+up_to_date = ''
+untracked = '?${count}'
+stashed = '$'
+modified = '!${count}'
+staged = '+${count}'
+renamed = '»${count}'
+deleted = '✘${count}'
+
+# ── Lenguajes (solo cuando hay contexto) ──
+[python]
+symbol = ' '
+style = 'yellow'
+format = 'via [$symbol$version( \($virtualenv\))]($style) '
+
+[nodejs]
+symbol = ' '
+style = 'green'
+format = 'via [$symbol$version]($style) '
+detect_files = ['package.json', '.nvmrc']
+
+[golang]
+symbol = ' '
+style = 'cyan'
+format = 'via [$symbol$version]($style) '
+
+# ── Duración del último comando (solo si tardó >2s) ──
+[cmd_duration]
+min_time = 2_000
+format = 'took [$duration](yellow) '
+
+# ── Character (la flecha del prompt) ──
+# Verde si el último comando fue OK, rojo si falló
+[character]
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
+vicmd_symbol = '[❮](bold blue)'
+
+# ── Módulos deshabilitados (ruido innecesario) ──
+[package]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true

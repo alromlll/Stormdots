@@ -1,0 +1,52 @@
+# ┌─────────────────────────────────────────────────────────────┐
+# │  Stormdot · .gitignore                                      │
+# │  Qué NO commitear en el repo de dotfiles                    │
+# └─────────────────────────────────────────────────────────────┘
+
+# ── Secrets ─────────────────────────────────────────────────────
+*.key
+*.pem
+*.token
+.env
+.env.*
+secrets/
+
+# ── Datos de perfil de Brave (solo queremos extensions.txt) ────
+brave/Profile/
+brave/Default/
+brave/*.json
+brave/*.db
+brave/Cache/
+
+# ── Backups generados por install.sh ────────────────────────────
+*.bak
+*.bak.*
+*.backup
+
+# ── Logs y caches ───────────────────────────────────────────────
+*.log
+__pycache__/
+.cache/
+.DS_Store
+
+# ── Editores ────────────────────────────────────────────────────
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# ── Estado de Stow ──────────────────────────────────────────────
+.stow-local-ignore
+
+# ── Histórico de fish que se autogenera ─────────────────────────
+fish/.config/fish/fish_history
+fish/.config/fish/fish_variables
+
+# ── Plugins de nvim instalados por lazy.nvim ────────────────────
+nvim/.config/nvim/lazy-lock.json
+
+# ── Cosas de IDE/dev ────────────────────────────────────────────
+node_modules/
+.venv/
+venv/
