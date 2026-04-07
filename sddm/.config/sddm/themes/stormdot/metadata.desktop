@@ -1,0 +1,15 @@
+[SddmGreeterTheme]
+Name=Stormdot
+Description=Minimalist Nord theme for SDDM — just clock and password
+Author=alromlll
+Copyright=Unlicense
+License=Unlicense
+Type=sddm-theme
+Version=1.0
+Website=https://github.com/alromlll/Stormdot
+Screenshot=screenshot.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Theme-Id=stormdot
+Theme-API=2.0

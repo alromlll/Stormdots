@@ -10,6 +10,23 @@
 
 set -euo pipefail
 
+# Autowindows-Anki-Kitty-Obsidian-Dolphin-Brave
+hyprctl dispatch workspace 1
+sleep 0.5
+anki &
+sleep 0.5
+obsidian &
+brave &
+sleep 3
+hyprctl dispatch workspace 2
+sleep 0.5
+hyprctl dispatch workspace 3
+dolphin &
+sleep 0.5
+kitty &
+sleep 0.5
+gedit &
+
 # Ejemplo: lanzar apps en workspaces específicos
 # hyprctl dispatch exec "[workspace 1 silent] kitty"
 # hyprctl dispatch exec "[workspace 2 silent] brave"
